@@ -6,6 +6,7 @@
 // app.Run();
 
 
+using CommandAPI.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +15,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<ICommandAPIRepo, MockCommandAPIRepo>();
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
